@@ -310,6 +310,11 @@ function Test-ModsUninstall ($AppID) {
 function Install-App ($AppID, $AppArgs) {
     $IsInstalled = Confirm-Install $AppID
     if (!($IsInstalled) -or $AllowUpgrade ) {
+        if ( $AllowUpgrade ) {
+            Write-ToLog "-> Update winget database" "Yellow"
+            "$Winget" update
+        }
+    
         #Check if mods exist (or already exist) for preinstall/install/installedonce/installed
         $ModsPreInstall, $ModsInstall, $ModsInstalledOnce, $ModsInstalled = Test-ModsInstall $($AppID)
 
