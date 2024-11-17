@@ -318,7 +318,7 @@ function Install-App ($AppID, $AppArgs) {
             Write-ToLog "-> Modifications for $AppID before install are being applied..." "Yellow"
             & "$ModsPreInstall"
         }
-
+        "$Winget" update
         #Install App
         Write-ToLog "-> Installing $AppID..." "Yellow"
         $WingetArgs = "install --id $AppID -e --accept-package-agreements --accept-source-agreements -s winget -h $AppArgs" -split " "
