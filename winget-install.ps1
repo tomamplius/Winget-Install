@@ -312,7 +312,7 @@ function Install-App ($AppID, $AppArgs) {
     if (!($IsInstalled) -or $AllowUpgrade ) {
         if ( $AllowUpgrade ) {
             Write-ToLog "-> Update winget database" "Yellow"
-            "$Winget" update
+            & "$Winget" "update"
         }
     
         #Check if mods exist (or already exist) for preinstall/install/installedonce/installed
